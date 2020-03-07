@@ -6,9 +6,9 @@ namespace ConsoleApp14
 {
     class NumStrategy : IStrategy
     {
-        public string FB()
+        public string FB(int num)
         {
-            return " ";
+            return num.ToString();
         }
     }
 }

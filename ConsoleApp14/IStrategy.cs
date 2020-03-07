@@ -6,6 +6,6 @@ namespace ConsoleApp14
 {
     interface IStrategy
     {
-        string FB();
+        string FB(int num);
     }
 }

@@ -16,7 +16,7 @@ namespace ConsoleApp14
         {
             bool b3 = num % 3 == 0;
             bool b5 = num % 5 == 0;
-            return d[(b3, b5)].FB().Replace(" ", num.ToString());
+            return d[(b3, b5)].FB(num);
         }
 
         static Dictionary<(bool, bool), IStrategy> d

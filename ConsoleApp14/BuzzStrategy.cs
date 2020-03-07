@@ -6,7 +6,7 @@ namespace ConsoleApp14
 {
     class BuzzStrategy : IStrategy
     {
-        public string FB()
+        public string FB(int num)
         {
             return "Buzz";
         }
