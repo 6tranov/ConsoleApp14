@@ -14,27 +14,18 @@ namespace ConsoleApp14
         }
         static string NumToFB(int num)
         {
-            int rem3 = num % 3;
-            int rem5 = num % 5;
-            string numStr = num.ToString();
-            return (d3[rem3] + d5[rem5]).Replace("  ", numStr).Replace(" ", "");
+            bool b3 = num % 3 == 0;
+            bool b5 = num % 5 == 0;
+            return d[(b3, b5)].FB().Replace(" ", num.ToString());
         }
 
-        static Dictionary<int, string> d3
-            = new Dictionary<int, string>
-            {
-                {0,"Fizz" },
-                {1," " },
-                {2," " },
-            };
-        static Dictionary<int, string> d5
-            = new Dictionary<int, string>
-            {
-                {0,"Buzz" },
-                {1," " },
-                {2," " },
-                {3," " },
-                {4," " },
-            };
+        static Dictionary<(bool, bool), IStrategy> d
+             = new Dictionary<(bool, bool), IStrategy>
+             {
+                 { (true,true),new FizzBuzzStrategy()},
+                 {(true,false),new FizzStrategy() },
+                 {(false,true),new BuzzStrategy() },
+                 {(false,false),new NumStrategy() }
+             };
     }
 }
