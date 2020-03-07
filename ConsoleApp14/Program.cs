@@ -9,33 +9,32 @@ namespace ConsoleApp14
         {
             for (int i = 0; i < 100; i++)
             {
-                Console.WriteLine(NumToFB(i));
+                Console.WriteLine($"{i}:{NumToFB(i)}");
             }
         }
         static string NumToFB(int num)
         {
             int rem3 = num % 3;
             int rem5 = num % 5;
-            return d[(rem3, rem5)].Replace(" ", num.ToString());
+            string numStr = num.ToString();
+            return (d3[rem3] + d5[rem5]).Replace("  ", numStr).Replace(" ", "");
         }
-        static Dictionary<(int, int), string> d
-            = new Dictionary<(int, int), string>
+
+        static Dictionary<int, string> d3
+            = new Dictionary<int, string>
             {
-                {(0,0),"FizzBuzz"},
-                {(0,1),"Fizz"},
-                {(0,2),"Fizz"},
-                {(0,3),"Fizz"},
-                {(0,4),"Fizz"},
-                {(1,0),"Buzz"},
-                {(1,1)," "},
-                {(1,2)," "},
-                {(1,3)," "},
-                {(1,4)," "},
-                {(2,0),"Buzz"},
-                {(2,1)," "},
-                {(2,2)," "},
-                {(2,3)," "},
-                {(2,4)," "},
+                {0,"Fizz" },
+                {1," " },
+                {2," " },
+            };
+        static Dictionary<int, string> d5
+            = new Dictionary<int, string>
+            {
+                {0,"Buzz" },
+                {1," " },
+                {2," " },
+                {3," " },
+                {4," " },
             };
     }
 }
