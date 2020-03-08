@@ -16,21 +16,19 @@ namespace ConsoleApp14
         {
             bool b3 = IsNumDivisibleBy(3);
             bool b5 = IsNumDivisibleBy(5);
-            return d[(b3, b5)].FB(num);
+            return d[(b3, b5)](num);
 
             bool IsNumDivisibleBy(int n)
             {
                 return num % n == 0;
             }
         }
-
-        static Dictionary<(bool, bool), IStrategy> d
-             = new Dictionary<(bool, bool), IStrategy>
-             {
-                 { (true,true),new FizzBuzzStrategy() },
-                 { (true,false),new FizzStrategy() },
-                 { (false,true),new BuzzStrategy() },
-                 { (false,false),new NumStrategy() }
-             };
+        static Dictionary<(bool, bool), Converter<int, string>> d = new Dictionary<(bool, bool), Converter<int, string>>
+        {
+            { (true,true),(n)=> {return "FizzBuzz"; }},
+            { (true,false),(n)=> { return "Fizz";}},
+            { (false,true),(n)=> { return "Buzz"; }},
+            { (false,false),(n)=> {return n.ToString(); }},
+        };
     }
 }
